@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  server:
+    restart: on-failure
+    build: ./server
+    ports: 
+      - "3000:3000"
+    volumes:
+    - ./server/data.txt:/usr/src/app/data.txt
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    depends_on:
+    - server
+
