@@ -1,6 +1,11 @@
 version: '3.9'
 services:
   server:
+    meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 18
     restart: on-failure
     build: ./server
     ports: 
