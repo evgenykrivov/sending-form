@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8" />
-		<title>Форма обратной связи</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" type="text/css" href="/index.css" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<div class="main-container">
-			<h1 class="title">Форма обратной связи</h1>
-			<form class="form" action="/submit" method="POST">
-				<input
-					class="input"
-					type="text"
-					name="name"
-					placeholder="Введите ваше имя"
-					maxlength="30"
-					minlength="2"
-					required
-				/>
-				<input
-					class="input"
-					type="text"
-					name="telegram"
-					placeholder="Введите ваш telegram"
-					maxlength="30"
-					minlength="2"
-					required
-				/>
-				<input
-					class="input"
-					type="email"
-					name="email"
-					placeholder="Введите ваш email"
-					maxlength="30"
-					minlength="2"
-					required
-				/>
-				<input class="submit" type="submit" value="Отправить" />
-			</form>
-		</div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Форма обратной связи</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <h1 class="title">Форма обратной связи</h1>
+      <form class="form" action="/submit" method="POST">
+        <input
+          class="input"
+          type="text"
+          name="name"
+          placeholder="Введите ваше имя"
+          maxlength="30"
+          minlength="2"
+          required
+        />
+        <input
+          class="input"
+          type="text"
+          name="telegram"
+          placeholder="Введите ваш telegram"
+          maxlength="30"
+          minlength="2"
+          required
+        />
+        <input
+          class="input"
+          type="email"
+          name="email"
+          placeholder="Введите ваш email"
+          maxlength="30"
+          minlength="2"
+          required
+        />
+        <input class="submit" type="submit" value="Отправить" />
+      </form>
+    </div>
+  </body>
 </html>

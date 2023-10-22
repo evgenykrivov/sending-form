@@ -2,17 +2,20 @@ version: '3.9'
 services:
   app_server:
     restart: on-failure
-    build: ./server
-    ports: 
-      - "3000:3000"
-    volumes:
-      - /usr/src/app/node_modules
-  nginx:
-    build: ./nginx
+    image: node:14.17.3-alpine3.14
+    working_dir: /usr/src/app
     ports:
-      - "80:80"
+      - '3000:3000'
     volumes:
-    - ./nginx/html:/var/www/public_html
+      - ./server:/usr/src/app
+    command: sh -c 'npm install && npm start'
+  nginx:
+    image: nginx:1.21.6
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/html:/var/www/public_html
+      - ./nginx/etc/nginx.conf:/etc/nginx/nginx.conf
     command: [nginx-debug, '-g', 'daemon off;']
     depends_on:
       - app_server

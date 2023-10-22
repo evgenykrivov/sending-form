@@ -1,0 +1,10 @@
+123{
+ name: 123,
+ telegram: 123,
+ email: 123@mail.ru
+}
+{
+ name: test,
+ telegram: test,
+ email: test@mail.ru
+}
