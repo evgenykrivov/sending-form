@@ -6,5 +6,6 @@ COPY ./package.json ./
 RUN npm install
 COPY ./server.js ./
 COPY ./data.txt ./data.txt
+COPY ./public ./public
 
 CMD ["npm","start"]

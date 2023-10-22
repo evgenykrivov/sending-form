@@ -5,29 +5,28 @@ const bodyParser = require('body-parser')
 const path = require('path')
 
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static('public'))
+
+app.get('/thanks', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public', 'thanks.html'))
+})
 
 app.post('/submit', (req, res) => {
-	const data = JSON.stringify(req.body)
-	console.log(data)
-	fs.open('/usr/src/app/data.txt', 'a', (err, fd) => {
+	const dataObject = req.body
+	const dataString = `{\n name: ${dataObject.name},\n telegram: ${dataObject.telegram},\n email: ${dataObject.email}\n}\n`
+
+	fs.appendFile(path.join(__dirname, '/data.txt'), dataString, err => {
 		if (err) {
-			console.error("Couldn't open the file: ", err)
-			return res.status(500).send('Server Error1')
+			console.error("Couldn't write to file: ", err)
+			return res.status(500).send('Server Error')
 		}
-		fs.write(fd, data, err => {
-			if (err) {
-				console.error("Couldn't write to the file: ", err)
-				return res.status(500).send('Server Error2')
-			}
-			fs.close(fd, err => {
-				if (err) {
-					console.error("Couldn't close the file: ", err)
-					return res.status(500).send('Server Error3')
-				}
-				res.send('Data written')
-			})
-		})
+		res.redirect('/thanks')
 	})
+})
+
+app.get('/download', function (req, res) {
+	const filePath = path.join(__dirname, '/data.txt')
+	res.download(filePath)
 })
 
 app.listen(3000, () => {

@@ -1,21 +1,18 @@
 version: '3.9'
 services:
-  server:
+  app_server:
     restart: on-failure
     build: ./server
     ports: 
       - "3000:3000"
     volumes:
-    - ./server/data.txt:/usr/src/app/data.txt
+      - /usr/src/app/node_modules
   nginx:
     build: ./nginx
     ports:
-    - "80:80"
+      - "80:80"
     volumes:
-    - ./nginx/etc/nginx.conf:/etc/nginx/nginx.conf:ro
     - ./nginx/html:/var/www/public_html
     command: [nginx-debug, '-g', 'daemon off;']
     depends_on:
-    - server
-
-
+      - app_server
